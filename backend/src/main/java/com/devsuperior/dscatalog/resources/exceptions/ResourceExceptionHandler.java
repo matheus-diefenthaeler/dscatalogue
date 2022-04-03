@@ -12,15 +12,15 @@ import java.time.Instant;
 @ControllerAdvice
 public class ResourceExceptionHandler {
 
-    @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<StandardError> entityNotFound(EntityNotFoundException e, HttpServletRequest request){
-        var error = new StandardError();
-        error.setTimestamp(Instant.now());
-        error.setStatus(HttpStatus.NOT_FOUND.value());
-        error.setError("Resource not found!");
-        error.setMessage(e.getMessage());
-        error.setPath(request.getRequestURI());
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
-
-    }
+  @ExceptionHandler(EntityNotFoundException.class)
+  public ResponseEntity<StandardError> entityNotFound(
+      EntityNotFoundException e, HttpServletRequest request) {
+    var error = new StandardError();
+    error.setTimestamp(Instant.now());
+    error.setStatus(HttpStatus.NOT_FOUND.value());
+    error.setError("Resource not found!");
+    error.setMessage(e.getMessage());
+    error.setPath(request.getRequestURI());
+    return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+  }
 }
