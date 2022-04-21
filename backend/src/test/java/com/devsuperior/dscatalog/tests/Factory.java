@@ -16,7 +16,7 @@ public class Factory {
             "Good Phone",
             800.0,
             "https://img.com/img.jpg",
-            Instant.parse("2022-04-21"));
+            Instant.parse("2022-04-21T03:00:00Z"));
 
     product.getCategories().add(new Category(2L, "Electronics"));
 
