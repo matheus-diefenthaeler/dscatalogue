@@ -8,7 +8,11 @@ import java.time.Instant;
 
 public class Factory {
 
-  public static Product createProduct() {
+    public static Category createCategory(){
+        return new Category(1L, "Electronics");
+    }
+
+    public static Product createProduct() {
     var product =
         new Product(
             1L,
@@ -18,7 +22,7 @@ public class Factory {
             "https://img.com/img.jpg",
             Instant.parse("2022-04-21T03:00:00Z"));
 
-    product.getCategories().add(new Category(2L, "Electronics"));
+    product.getCategories().add(createCategory());
 
     return product;
   }
