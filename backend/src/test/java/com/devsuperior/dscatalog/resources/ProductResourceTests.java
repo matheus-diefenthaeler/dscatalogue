@@ -12,10 +12,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.ResultActions;
 
 import java.util.List;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(ProductResource.class)
 public class ProductResourceTests {
@@ -37,14 +39,10 @@ public class ProductResourceTests {
   }
 
   @Test
-  public void findAllShouldReturnPage() {
+  public void findAllShouldReturnPage() throws Exception {
 
-    try {
-      mockMvc
-          .perform(MockMvcRequestBuilders.get("/products"))
-          .andExpect(MockMvcResultMatchers.status().isOk());
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+    ResultActions result = mockMvc.perform(get("/products"));
+
+    result.andExpect(status().isOk());
   }
 }
